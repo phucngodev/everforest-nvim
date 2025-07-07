@@ -107,7 +107,7 @@ highlights.generate_syntax = function(palette, options)
     lCursor = { link = "Cursor" },
     CursorIM = { link = "Cursor" },
     CursorColumn = syntax_entry(palette.none, palette.bg1),
-    CursorLine = syntax_entry(palette.none, palette.bg1),
+    CursorLine = syntax_entry(palette.none, palette.none),
     Directory = syntax_entry(palette.green, palette.none),
     DiffAdd = syntax_entry(palette.none, palette.bg_green),
     DiffChange = syntax_entry(palette.none, palette.bg_blue),
@@ -138,8 +138,8 @@ highlights.generate_syntax = function(palette, options)
     MoreMsg = syntax_entry(palette.yellow, palette.none, { styles.bold }),
     NonText = syntax_entry(palette.bg4, palette.none),
     Normal = syntax_entry(palette.fg, transparency_respecting_colour(palette.bg0)),
-    NormalFloat = syntax_entry(palette.fg, (options.float_style == "bright" and palette.bg2) or palette.bg_dim),
-    FloatBorder = syntax_entry(palette.grey1, (options.float_style == "bright" and palette.bg2) or palette.bg_dim),
+    NormalFloat = syntax_entry(palette.fg, palette.bg0),
+    FloatBorder = syntax_entry(palette.grey1, palette.bg0),
     FloatTitle = syntax_entry(
       palette.grey1,
       (options.float_style == "bright" and palette.bg2) or palette.bg_dim,
@@ -149,9 +149,9 @@ highlights.generate_syntax = function(palette, options)
       palette.fg,
       transparency_respecting_colour((options.dim_inactive_windows and palette.bg_dim) or palette.bg0)
     ),
-    Pmenu = syntax_entry(palette.fg, palette.bg2),
+    Pmenu = syntax_entry(palette.fg, palette.bg0),
     PmenuSbar = syntax_entry(palette.none, palette.bg2),
-    PmenuSel = syntax_entry(palette.bg0, palette.statusline1),
+    PmenuSel = syntax_entry(palette.fg, palette.bg2),
     PmenuThumb = syntax_entry(palette.none, palette.grey0),
     Question = syntax_entry(palette.yellow, palette.none),
     QuickFixLine = syntax_entry(palette.purple, palette.none, { styles.bold }),
@@ -181,16 +181,10 @@ highlights.generate_syntax = function(palette, options)
       { styles.undercurl },
       palette.purple
     ),
-    StatusLine = syntax_entry(palette.grey1, options.transparent_background_level == 2 and palette.none or palette.bg2),
-    StatusLineNC = syntax_entry(
-      options.transparent_background_level == 2 and palette.grey0 or palette.grey1,
-      options.transparent_background_level == 2 and palette.none or palette.bg1
-    ),
+    StatusLine = syntax_entry(palette.grey1, palette.bg2),
+    StatusLineNC = syntax_entry(palette.grey1, palette.bg2),
     TabLine = syntax_entry(palette.grey2, palette.bg3),
-    TabLineFill = syntax_entry(
-      palette.grey1,
-      options.transparent_background_level == 2 and palette.none or palette.bg1
-    ),
+    TabLineFill = syntax_entry(palette.grey2, palette.bg3),
     TabLineSel = syntax_entry(palette.bg0, palette.statusline1),
     Title = syntax_entry(palette.orange, palette.none, { styles.bold }),
     Visual = syntax_entry(palette.none, palette.bg_visual),
@@ -210,14 +204,8 @@ highlights.generate_syntax = function(palette, options)
     Terminal = syntax_entry(palette.fg, transparency_respecting_colour(palette.bg0)),
     ToolbarLine = syntax_entry(palette.fg, transparency_respecting_colour(palette.bg2)),
 
-    StatusLineTerm = syntax_entry(
-      palette.grey1,
-      options.transparent_background_level == 2 and palette.none or palette.bg1
-    ),
-    StatusLineTermNC = syntax_entry(
-      options.transparent_background_level == 2 and palette.grey0 or palette.grey1,
-      options.transparent_background_level == 2 and palette.none or palette.bg0
-    ),
+    StatusLineTerm = syntax_entry(palette.grey1, palette.bg2),
+    StatusLineTermNC = syntax_entry(palette.grey1, palette.bg2),
     VertSplit = syntax_entry(palette.bg4, (options.dim_inactive_windows and palette.bg_dim) or palette.none),
 
     Debug = syntax_entry(palette.orange, palette.none),
@@ -1607,6 +1595,10 @@ highlights.generate_syntax = function(palette, options)
     DirvishArg = { link = "Yellow" },
 
     -- https://github.com/kyazdani42/nvim-tree.lua
+    NvimTreeNormal = syntax_entry(palette.fg, palette.bg0),
+    NvimTreeEndOfBuffer = syntax_entry(palette.fg, palette.bg0),
+    NvimTreeVertSplit = syntax_entry(palette.bg0, palette.bg0),
+    NvimTreeCursorLine = syntax_entry(palette.none, palette.bg2),
     NvimTreeSymlink = { link = "Fg" },
     NvimTreeFolderName = { link = "Green" },
     NvimTreeRootFolder = { link = "Grey" },
@@ -1885,6 +1877,7 @@ highlights.generate_syntax = function(palette, options)
     markdownIdDeclaration = { link = "markdownLinkText" },
     markdownBoldDelimiter = { link = "Grey" },
     markdownId = { link = "Yellow" },
+    RenderMarkdownCode = syntax_entry(palette.none, palette.bg0),
 
     -- HTML
     htmlH1 = syntax_entry(palette.red, palette.none, { styles.bold }),
@@ -2164,10 +2157,6 @@ highlights.generate_syntax = function(palette, options)
   end
 
   if options.transparent_background_level == 0 then
-    syntax["NvimTreeNormal"] = syntax_entry(palette.fg, palette.bg_dim)
-    syntax["NvimTreeEndOfBuffer"] = syntax_entry(palette.bg_dim, palette.bg_dim)
-    syntax["NvimTreeVertSplit"] = syntax_entry(palette.bg0, palette.bg0)
-    syntax["NvimTreeCursorLine"] = syntax_entry(palette.none, palette.bg0)
     syntax["NeoTreeNormal"] = syntax_entry(palette.fg, palette.bg_dim)
     syntax["NeoTreeEndOfBuffer"] = syntax_entry(palette.bg_dim, palette.bg_dim)
     syntax["NeoTreeVertSplit"] = syntax_entry(palette.bg0, palette.bg0)
