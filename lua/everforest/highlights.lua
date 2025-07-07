@@ -107,7 +107,7 @@ highlights.generate_syntax = function(palette, options)
     lCursor = { link = "Cursor" },
     CursorIM = { link = "Cursor" },
     CursorColumn = syntax_entry(palette.none, palette.bg1),
-    CursorLine = syntax_entry(palette.none, palette.bg1),
+    CursorLine = syntax_entry(palette.none, palette.none),
     Directory = syntax_entry(palette.green, palette.none),
     DiffAdd = syntax_entry(palette.none, palette.bg_green),
     DiffChange = syntax_entry(palette.none, palette.bg_blue),
@@ -138,8 +138,8 @@ highlights.generate_syntax = function(palette, options)
     MoreMsg = syntax_entry(palette.yellow, palette.none, { styles.bold }),
     NonText = syntax_entry(palette.bg4, palette.none),
     Normal = syntax_entry(palette.fg, transparency_respecting_colour(palette.bg0)),
-    NormalFloat = syntax_entry(palette.fg, (options.float_style == "bright" and palette.bg2) or palette.bg_dim),
-    FloatBorder = syntax_entry(palette.grey1, (options.float_style == "bright" and palette.bg2) or palette.bg_dim),
+    NormalFloat = syntax_entry(palette.fg, palette.bg0),
+    FloatBorder = syntax_entry(palette.grey1, palette.bg0),
     FloatTitle = syntax_entry(
       palette.grey1,
       (options.float_style == "bright" and palette.bg2) or palette.bg_dim,
@@ -149,9 +149,9 @@ highlights.generate_syntax = function(palette, options)
       palette.fg,
       transparency_respecting_colour((options.dim_inactive_windows and palette.bg_dim) or palette.bg0)
     ),
-    Pmenu = syntax_entry(palette.fg, palette.bg2),
+    Pmenu = syntax_entry(palette.fg, palette.bg0),
     PmenuSbar = syntax_entry(palette.none, palette.bg2),
-    PmenuSel = syntax_entry(palette.bg0, palette.statusline1),
+    PmenuSel = syntax_entry(palette.fg, palette.bg0),
     PmenuThumb = syntax_entry(palette.none, palette.grey0),
     Question = syntax_entry(palette.yellow, palette.none),
     QuickFixLine = syntax_entry(palette.purple, palette.none, { styles.bold }),
@@ -1885,6 +1885,7 @@ highlights.generate_syntax = function(palette, options)
     markdownIdDeclaration = { link = "markdownLinkText" },
     markdownBoldDelimiter = { link = "Grey" },
     markdownId = { link = "Yellow" },
+    RenderMarkdownCode = syntax_entry(palette.none, palette.bg0),
 
     -- HTML
     htmlH1 = syntax_entry(palette.red, palette.none, { styles.bold }),
