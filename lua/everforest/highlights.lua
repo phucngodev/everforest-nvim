@@ -107,7 +107,7 @@ highlights.generate_syntax = function(palette, options)
     lCursor = { link = "Cursor" },
     CursorIM = { link = "Cursor" },
     CursorColumn = syntax_entry(palette.none, palette.bg1),
-    CursorLine = syntax_entry(palette.none, palette.none),
+    CursorLine = syntax_entry(palette.none, palette.bg2),
     Directory = syntax_entry(palette.green, palette.none),
     DiffAdd = syntax_entry(palette.none, palette.bg_green),
     DiffChange = syntax_entry(palette.none, palette.bg_blue),
@@ -151,7 +151,7 @@ highlights.generate_syntax = function(palette, options)
     ),
     Pmenu = syntax_entry(palette.fg, palette.bg0),
     PmenuSbar = syntax_entry(palette.none, palette.bg2),
-    PmenuSel = syntax_entry(palette.fg, palette.bg0),
+    PmenuSel = syntax_entry(palette.fg, palette.bg2),
     PmenuThumb = syntax_entry(palette.none, palette.grey0),
     Question = syntax_entry(palette.yellow, palette.none),
     QuickFixLine = syntax_entry(palette.purple, palette.none, { styles.bold }),
@@ -181,16 +181,10 @@ highlights.generate_syntax = function(palette, options)
       { styles.undercurl },
       palette.purple
     ),
-    StatusLine = syntax_entry(palette.grey1, options.transparent_background_level == 2 and palette.none or palette.bg2),
-    StatusLineNC = syntax_entry(
-      options.transparent_background_level == 2 and palette.grey0 or palette.grey1,
-      options.transparent_background_level == 2 and palette.none or palette.bg1
-    ),
+    StatusLine = syntax_entry(palette.grey1, palette.bg2),
+    StatusLineNC = syntax_entry(palette.grey1, palette.bg2),
     TabLine = syntax_entry(palette.grey2, palette.bg3),
-    TabLineFill = syntax_entry(
-      palette.grey1,
-      options.transparent_background_level == 2 and palette.none or palette.bg1
-    ),
+    TabLineFill = syntax_entry(palette.grey2, palette.bg3),
     TabLineSel = syntax_entry(palette.bg0, palette.statusline1),
     Title = syntax_entry(palette.orange, palette.none, { styles.bold }),
     Visual = syntax_entry(palette.none, palette.bg_visual),
@@ -210,14 +204,8 @@ highlights.generate_syntax = function(palette, options)
     Terminal = syntax_entry(palette.fg, transparency_respecting_colour(palette.bg0)),
     ToolbarLine = syntax_entry(palette.fg, transparency_respecting_colour(palette.bg2)),
 
-    StatusLineTerm = syntax_entry(
-      palette.grey1,
-      options.transparent_background_level == 2 and palette.none or palette.bg1
-    ),
-    StatusLineTermNC = syntax_entry(
-      options.transparent_background_level == 2 and palette.grey0 or palette.grey1,
-      options.transparent_background_level == 2 and palette.none or palette.bg0
-    ),
+    StatusLineTerm = syntax_entry(palette.grey1, palette.bg2),
+    StatusLineTermNC = syntax_entry(palette.grey1, palette.bg2),
     VertSplit = syntax_entry(palette.bg4, (options.dim_inactive_windows and palette.bg_dim) or palette.none),
 
     Debug = syntax_entry(palette.orange, palette.none),
