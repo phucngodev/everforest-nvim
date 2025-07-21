@@ -107,7 +107,7 @@ highlights.generate_syntax = function(palette, options)
     lCursor = { link = "Cursor" },
     CursorIM = { link = "Cursor" },
     CursorColumn = syntax_entry(palette.none, palette.bg1),
-    CursorLine = syntax_entry(palette.none, palette.bg2),
+    CursorLine = syntax_entry(palette.none, palette.none),
     Directory = syntax_entry(palette.green, palette.none),
     DiffAdd = syntax_entry(palette.none, palette.bg_green),
     DiffChange = syntax_entry(palette.none, palette.bg_blue),
@@ -1595,6 +1595,10 @@ highlights.generate_syntax = function(palette, options)
     DirvishArg = { link = "Yellow" },
 
     -- https://github.com/kyazdani42/nvim-tree.lua
+    NvimTreeNormal = syntax_entry(palette.fg, palette.bg1),
+    NvimTreeEndOfBuffer = syntax_entry(palette.fg, palette.bg1),
+    NvimTreeVertSplit = syntax_entry(palette.bg0, palette.bg0),
+    NvimTreeCursorLine = syntax_entry(palette.none, palette.bg2),
     NvimTreeSymlink = { link = "Fg" },
     NvimTreeFolderName = { link = "Green" },
     NvimTreeRootFolder = { link = "Grey" },
@@ -2153,10 +2157,6 @@ highlights.generate_syntax = function(palette, options)
   end
 
   if options.transparent_background_level == 0 then
-    syntax["NvimTreeNormal"] = syntax_entry(palette.fg, palette.bg_dim)
-    syntax["NvimTreeEndOfBuffer"] = syntax_entry(palette.bg_dim, palette.bg_dim)
-    syntax["NvimTreeVertSplit"] = syntax_entry(palette.bg0, palette.bg0)
-    syntax["NvimTreeCursorLine"] = syntax_entry(palette.none, palette.bg0)
     syntax["NeoTreeNormal"] = syntax_entry(palette.fg, palette.bg_dim)
     syntax["NeoTreeEndOfBuffer"] = syntax_entry(palette.bg_dim, palette.bg_dim)
     syntax["NeoTreeVertSplit"] = syntax_entry(palette.bg0, palette.bg0)
