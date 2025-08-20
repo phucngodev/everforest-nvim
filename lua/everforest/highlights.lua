@@ -216,6 +216,7 @@ highlights.generate_syntax = function(palette, options)
     DiagnosticFloatingWarn = { link = "WarningFloat" },
     DiagnosticFloatingInfo = { link = "InfoFloat" },
     DiagnosticFloatingHint = { link = "HintFloat" },
+    DiagnosticFloatingOk = { link = "OkFloat" },
     DiagnosticError = syntax_entry(palette.red, options.diagnostic_text_highlight and palette.bg_red or palette.none),
     DiagnosticWarn = syntax_entry(
       palette.yellow,
@@ -223,14 +224,17 @@ highlights.generate_syntax = function(palette, options)
     ),
     DiagnosticInfo = syntax_entry(palette.blue, options.diagnostic_text_highlight and palette.bg_blue or palette.none),
     DiagnosticHint = syntax_entry(
-      palette.green,
-      options.diagnostic_text_highlight and palette.bg_green or palette.none
+      palette.purple,
+      options.diagnostic_text_highlight and palette.bg_purple or palette.none
     ),
+    DiagnosticOk = syntax_entry(palette.green, options.diagnostic_text_highlight and palette.bg_green or palette.none),
     DiagnosticUnnecessary = syntax_entry(palette.grey1, palette.none),
+    DiagnosticDeprecated = syntax_entry(palette.none, palette.none, { styles.strikethrough }, palette.fg),
     DiagnosticVirtualTextError = { link = "VirtualTextError" },
     DiagnosticVirtualTextWarn = { link = "VirtualTextWarning" },
     DiagnosticVirtualTextInfo = { link = "VirtualTextInfo" },
     DiagnosticVirtualTextHint = { link = "VirtualTextHint" },
+    DiagnosticVirtualTextOk = { link = "VirtualTextOk" },
     DiagnosticUnderlineError = syntax_entry(
       palette.red,
       options.diagnostic_text_highlight and palette.bg_red or palette.none,
@@ -250,7 +254,13 @@ highlights.generate_syntax = function(palette, options)
       palette.blue
     ),
     DiagnosticUnderlineHint = syntax_entry(
-      palette.green,
+      palette.purple,
+      options.diagnostic_text_highlight and palette.bg_purple or palette.none,
+      { styles.undercurl },
+      palette.purple
+    ),
+    DiagnosticUnderlineOk = syntax_entry(
+      palette.none,
       options.diagnostic_text_highlight and palette.bg_green or palette.none,
       { styles.undercurl },
       palette.green
@@ -258,7 +268,8 @@ highlights.generate_syntax = function(palette, options)
     DiagnosticSignError = { link = "RedSign" },
     DiagnosticSignWarn = { link = "YellowSign" },
     DiagnosticSignInfo = { link = "BlueSign" },
-    DiagnosticSignHint = { link = "GreenSign" },
+    DiagnosticSignHint = { link = "PurpleSign" },
+    DiagnosticSignOk = { link = "GreenSign" },
 
     -- LSP colours
     LspDiagnosticsFloatingError = { link = "DiagnosticFloatingError" },
@@ -391,27 +402,29 @@ highlights.generate_syntax = function(palette, options)
     ),
     HintText = syntax_entry(
       palette.none,
-      options.diagnostic_text_highlight and palette.bg_green or palette.none,
+      options.diagnostic_text_highlight and palette.bg_purple or palette.none,
       { styles.undercurl },
-      palette.green
+      palette.purple
     ),
 
     ErrorLine = options.diagnostic_line_highlight and syntax_entry(palette.none, palette.bg_red) or {},
     WarningLine = options.diagnostic_line_highlight and syntax_entry(palette.none, palette.bg_yellow) or {},
     InfoLine = options.diagnostic_line_highlight and syntax_entry(palette.none, palette.bg_blue) or {},
-    HintLine = options.diagnostic_line_highlight and syntax_entry(palette.none, palette.bg_green) or {},
+    HintLine = options.diagnostic_line_highlight and syntax_entry(palette.none, palette.bg_purple) or {},
 
     -- Configuration based on `diagnostic_virtual_text` option
     VirtualTextWarning = { link = options.diagnostic_virtual_text == "grey" and "Grey" or "Yellow" },
     VirtualTextError = { link = options.diagnostic_virtual_text == "grey" and "Grey" or "Red" },
     VirtualTextInfo = { link = options.diagnostic_virtual_text == "grey" and "Grey" or "Blue" },
-    VirtualTextHint = { link = options.diagnostic_virtual_text == "grey" and "Grey" or "Green" },
+    VirtualTextHint = { link = options.diagnostic_virtual_text == "grey" and "Grey" or "Purple" },
+    VirtualTextOk = { link = options.diagnostic_virtual_text == "grey" and "Grey" or "Green" },
 
     -- Diagnostic text inherits the background of the floating window, which is Neovim's default.
     ErrorFloat = syntax_entry(palette.red, palette.none),
     WarningFloat = syntax_entry(palette.yellow, palette.none),
     InfoFloat = syntax_entry(palette.blue, palette.none),
-    HintFloat = syntax_entry(palette.green, palette.none),
+    HintFloat = syntax_entry(palette.purple, palette.none),
+    OkFloat = syntax_entry(palette.green, palette.none),
     CurrentWord = syntax_entry(palette.none, palette.none, { styles.bold }),
 
     -- Git commit colours
@@ -851,7 +864,7 @@ highlights.generate_syntax = function(palette, options)
     CocErrorSign = { link = "RedSign" },
     CocWarningSign = { link = "YellowSign" },
     CocInfoSign = { link = "BlueSign" },
-    CocHintSign = { link = "GreenSign" },
+    CocHintSign = { link = "PurpleSign" },
     CocWarningVirtualText = { link = "VirtualTextWarning" },
     CocErrorVirtualText = { link = "VirtualTextError" },
     CocInfoVirtualText = { link = "VirtualTextInfo" },
@@ -873,6 +886,7 @@ highlights.generate_syntax = function(palette, options)
     CocGitChangedSign = { link = "BlueSign" },
     CocGitRemovedSign = { link = "RedSign" },
     CocGitTopRemovedSign = { link = "RedSign" },
+    CocInlineVirtualText = { link = "Grey" },
     CocTreeOpenClose = { link = "Aqua" },
     CocTreeDescription = { link = "Grey" },
 
@@ -957,7 +971,7 @@ highlights.generate_syntax = function(palette, options)
     LspDiagSignErrorText = { link = "RedSign" },
     LspDiagSignWarningText = { link = "YellowSign" },
     LspDiagSignInfoText = { link = "BlueSign" },
-    LspDiagSignHintText = { link = "GreenSign" },
+    LspDiagSignHintText = { link = "PurpleSign" },
     LspDiagVirtualTextError = { link = "VirtualTextError" },
     LspDiagVirtualTextWarning = { link = "VirtualTextWarning" },
     LspDiagVirtualTextInfo = { link = "VirtualTextInfo" },
@@ -1620,7 +1634,7 @@ highlights.generate_syntax = function(palette, options)
     NvimTreeLspDiagnosticsError = { link = "RedSign" },
     NvimTreeLspDiagnosticsWarning = { link = "YellowSign" },
     NvimTreeLspDiagnosticsInformation = { link = "BlueSign" },
-    NvimTreeLspDiagnosticsHint = { link = "GreenSign" },
+    NvimTreeLspDiagnosticsHint = { link = "PurpleSign" },
 
     -- nvim-neo-tree/neo-tree.nvim
     NeoTreeDirectoryIcon = { link = "Orange" },
@@ -2170,6 +2184,12 @@ highlights.generate_syntax = function(palette, options)
     syntax["InlayHints"] = { link = "LineNr" }
   elseif options.inlay_hints_background == "dimmed" then
     syntax["InlayHints"] = syntax_entry(palette.grey1, palette.bg_dim)
+  end
+
+  if options.float_style == "none" then
+    syntax["NormalFloat"] = syntax_entry(palette.fg, palette.none)
+    syntax["FloatBorder"] = syntax_entry(palette.grey1, palette.none)
+    syntax["FloatTitle"] = syntax_entry(palette.fg, palette.none, { styles.bold })
   end
 
   local lsp_kind_colours = {
