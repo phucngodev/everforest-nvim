@@ -1893,6 +1893,12 @@ highlights.generate_syntax = function(palette, options)
     markdownId = { link = "Yellow" },
     RenderMarkdownCode = syntax_entry(palette.none, palette.bg0),
 
+    -- Avante
+    AvanteConflictCurrent = { link = "DiffChange" },
+    AvanteConflictIncoming = { link = "DiffAdd" },
+    AvanteToBeDeletedWOStrikethrough = { link = "DiffDelete" },
+    AvanteSidebarWinSeparator= { link = "VertSplit" },
+
     -- HTML
     htmlH1 = syntax_entry(palette.red, palette.none, { styles.bold }),
     htmlH2 = syntax_entry(palette.orange, palette.none, { styles.bold }),
